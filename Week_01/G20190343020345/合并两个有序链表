@@ -1,0 +1,105 @@
+//java
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+
+        ListNode head, ft;
+        if (l1.val > l2.val) {
+            head = l2;
+            ft = l2;
+            l2 = l2.next;
+        } else {
+            head = l1;
+            ft = l1;
+            l1 = l1.next;
+        }
+
+        while (l1 != null || l2 != null) {
+            if (l1 == null) {
+                ft.next = l2;
+                break;
+            }
+            if (l2 == null) {
+                ft.next = l1;
+                break;
+            }
+            if (l1.val > l2.val) {
+                ft.next = l2;
+                ft = l2;
+                l2 = l2.next;
+            } else {
+                ft.next = l1;
+                ft = l1;
+                l1 = l1.next;
+            }
+        }
+        return head;
+    }
+}
+
+//golang
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+
+    if l1 == nil {
+        return l2
+    }
+    if l2 == nil {
+        return l1
+    }
+    
+    var ft, head *ListNode
+    if l1.Val > l2.Val {
+        ft = l2
+        head = l2
+        l2 = l2.Next
+    } else {
+        ft = l1
+        head = l1
+        l1 = l1.Next
+    }
+
+    for l1 != nil || l2 != nil {
+        if l1 == nil {
+            ft.Next = l2
+            break
+        }
+        if l2 == nil {
+            ft.Next = l1
+            break
+        }
+        if l1.Val >= l2.Val {
+            ft.Next = l2
+            ft = l2
+            l2 = l2.Next
+        } else {
+            ft.Next = l1
+            ft = l1
+            l1 = l1.Next
+        }
+    }
+
+    return head
+}
