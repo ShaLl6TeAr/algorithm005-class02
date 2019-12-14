@@ -1,0 +1,50 @@
+//java
+class Solution {
+    public void moveZeroes(int[] nums) {
+        if (nums.length > 0) {
+
+            int slowly = 0;
+            int fast = 0;
+            int t = 0;
+
+            while (fast < nums.length) {
+                if (nums[slowly] == 0 && nums[fast] != 0) {
+                    t = nums[slowly];
+                    nums[slowly] = nums[fast];
+                    nums[fast] = t;
+                    slowly++;
+                    fast++;
+                    continue;
+                }
+                if (nums[slowly] != 0) {
+                    slowly++;
+                }
+                fast++;
+            }
+        }
+    }
+}
+
+//golang
+func moveZeroes(nums []int)  {
+    
+    if len(nums) > 0 {
+
+        var fast, slowly, t int
+
+        for fast < len(nums) {
+            if nums[slowly] == 0 && nums[fast] != 0 {
+                t = nums[slowly]
+                nums[slowly] = nums[fast]
+                nums[fast] = t
+                slowly++
+                fast++ 
+                continue
+            }
+            if nums[slowly] != 0 {
+                slowly++
+            }
+            fast++
+        }
+    }
+}
