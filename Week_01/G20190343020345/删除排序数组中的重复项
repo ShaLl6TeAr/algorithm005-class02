@@ -1,0 +1,15 @@
+func removeDuplicates(nums []int) int {
+    
+    var fast, slowly int
+
+    for fast < len(nums) {
+        if nums[fast] != nums[slowly] {
+            nums[slowly+1] = nums[fast]
+            slowly++
+        } 
+        fast++
+    }
+
+    slowly++
+    return slowly
+}
