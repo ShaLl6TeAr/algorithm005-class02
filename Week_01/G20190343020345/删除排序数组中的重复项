@@ -1,0 +1,33 @@
+//golang
+func removeDuplicates(nums []int) int {
+    
+    var slowly int
+
+    for fast := 0; fast < len(nums); fast++ {
+        if nums[fast] != nums[slowly] {
+            nums[slowly+1] = nums[fast]
+            slowly++
+        } 
+    }
+
+    slowly++
+    return slowly
+}
+
+//java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        
+        int slowly = 0;
+
+        for (int fast = 0; fast < nums.length; fast++) {
+            if (nums[fast] != nums[slowly]) {
+                nums[slowly+1] = nums[fast];
+                slowly++;
+            }
+        }
+
+        return slowly + 1;
+
+    }
+}
